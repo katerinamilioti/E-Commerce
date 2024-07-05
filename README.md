@@ -1,2 +1,12 @@
 # E-Commerce
-A small UI application for the homepage of an E- Commerce website
+Prerequisites:
+  Node.js
+  npm or yarn
+
+When clone the repository install the dependecies:
+  npm install or yarn install
+  
+For running the project:
+  npm run dev or yarn dev
+
+

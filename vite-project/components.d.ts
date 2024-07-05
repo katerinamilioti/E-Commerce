@@ -7,7 +7,11 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BaseButton: typeof import('./src/components/base/BaseButton.vue')['default']
     BButton: typeof import('bootstrap-vue-next')['BButton']
+    BButtonGroup: typeof import('bootstrap-vue-next')['BButtonGroup']
+    BCarousel: typeof import('bootstrap-vue-next')['BCarousel']
+    BCarouselSlide: typeof import('bootstrap-vue-next')['BCarouselSlide']
     BCollapse: typeof import('bootstrap-vue-next')['BCollapse']
     BDropdownItem: typeof import('bootstrap-vue-next')['BDropdownItem']
     BFormInput: typeof import('bootstrap-vue-next')['BFormInput']
@@ -18,6 +22,7 @@ declare module 'vue' {
     BNavForm: typeof import('bootstrap-vue-next')['BNavForm']
     BNavItem: typeof import('bootstrap-vue-next')['BNavItem']
     BNavItemDropdown: typeof import('bootstrap-vue-next')['BNavItemDropdown']
+    CallToActionSection: typeof import('./src/components/CallToActionSection.vue')['default']
     Favorites: typeof import('./src/components/navbar/Favorites.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     NavigationSearch: typeof import('./src/components/navbar/NavigationSearch.vue')['default']
@@ -26,6 +31,7 @@ declare module 'vue' {
     TheNavigationBar: typeof import('./src/components/navbar/TheNavigationBar.vue')['default']
     TheNavigationSearch: typeof import('./src/components/navbar/TheNavigationSearch.vue')['default']
     TheShoppingBag: typeof import('./src/components/navbar/TheShoppingBag.vue')['default']
+    TheSliderBanner: typeof import('./src/components/TheSliderBanner.vue')['default']
     TheTheNavigationBar: typeof import('./src/components/navbar/TheTheNavigationBar.vue')['default']
     TheUserDropDown: typeof import('./src/components/navbar/TheUserDropDown.vue')['default']
     UserDropDown: typeof import('./src/components/navbar/UserDropDown.vue')['default']

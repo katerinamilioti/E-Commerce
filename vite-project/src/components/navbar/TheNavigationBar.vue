@@ -16,25 +16,37 @@
       <BNavbarNav class="ms-auto mb-2 mb-lg-0">
         <TheFavorites></TheFavorites>
         <TheShoppingBag></TheShoppingBag>
-        <TheUserDropDown></TheUserDropDown>
-        <TheSignUp></TheSignUp>
+        <div v-if="isSignUpSuccess">
+          <TheUserDropDown></TheUserDropDown>
+          <BToast v-model="isActive" variant="info">
+            <template #title> Title </template>
+            Correct Registration!
+          </BToast>
+        </div>
+        <div v-else>
+          <TheSignUp></TheSignUp>
+        </div>
       </BNavbarNav>
     </BCollapse>
   </BNavbar>
 </template>
 
 <script setup lang="ts">
-  import TheNavigationSearch from "./TheNavigationSearch.vue";
-  import TheFavorites from "./TheFavorites.vue";
-  import TheShoppingBag from "./TheShoppingBag.vue";
-  import TheUserDropDown from "./TheUserDropDown.vue";
-  import TheSignUp from "./TheSignUp.vue";
+import TheNavigationSearch from "./TheNavigationSearch.vue";
+import TheFavorites from "./TheFavorites.vue";
+import TheShoppingBag from "./TheShoppingBag.vue";
+import TheUserDropDown from "./TheUserDropDown.vue";
+import TheSignUp from "./TheSignUp.vue";
+import { ref } from "vue";
+
+const isSignUpSuccess = ref(false);
+const isActive = ref(false);
 </script>
 
 <style scoped>
-  @media screen and (min-width: 992px) {
-    :deep(.nav-search-position) {
-      margin-left: 3rem;
-    }
+@media screen and (min-width: 992px) {
+  :deep(.nav-search-position) {
+    margin-left: 3rem;
   }
+}
 </style>

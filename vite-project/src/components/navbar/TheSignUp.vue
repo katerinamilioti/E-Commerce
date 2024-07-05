@@ -1,54 +1,43 @@
 <template>
   <BaseButton @click="showModal = !showModal">
-    <template #BaseButtonContent> Sing up </template>
+    <template #BaseButtonContent> Sign up </template>
   </BaseButton>
-  <BModal v-model="showModal" title="Sign up Form" @ok="userEmailSubmit"
-    ><BaseInput
-      label="email"
-      type="email"
-      value=""
-      @changedInputValue="updateInputvalue"
-    ></BaseInput
-  ></BModal>
+  <BaseModal
+    :show-modal="showModal"
+    @update:showModal="(newVal: boolean) => (showModal = newVal)"
+    title="Sign up Form"
+    @ok="userEmailSubmit"
+  >
+    <template #BaseModalContent>
+      <BaseInput
+        label="email"
+        type="email"
+        :value="userEmail"
+        @changedInputValue="updateInputValue"
+      ></BaseInput>
+    </template>
+  </BaseModal>
 </template>
 
 <script setup lang="ts">
-import BaseButton from "../base/BaseButton.vue";
-import BaseInput from "../base/BaseInput.vue";
-import { ref } from "vue";
+import BaseButton from '../base/BaseButton.vue';
+import BaseInput from '../base/BaseInput.vue';
+import BaseModal from '../base/BaseModal.vue';
+import { ref } from 'vue';
+import { useUserStore } from '../../../src/stores/userStore.ts';
 
 const showModal = ref(false);
-
+const userStore = useUserStore();
 const userEmail = ref("");
 
-const updateInputvalue = (newValue: string) => {
+const updateInputValue = (newValue: string) => {
   userEmail.value = newValue;
-  console.log("UPDATE");
+  console.log('UPDATE');
 };
 
 const userEmailSubmit = () => {
-  const userData = {
-    email: userEmail.value
-  };
-
-  fetch("https://dummyjson.com/users/add", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(userData),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log("Success:", data);
-      showModal.value = false;
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  userStore.SUBMIT_USER_EMAIL();
+  showModal.value = false;
 };
 </script>
 

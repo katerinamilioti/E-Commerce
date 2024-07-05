@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia';
 import { postRequest } from '../utils/api';
+import { User } from '../interfaces/User.types';
+import { ApiEndpoints } from '../enums/ApiEndpoints';
 
 export const useUserStore = defineStore('userStore', {
   state: () => ({
@@ -14,21 +16,17 @@ export const useUserStore = defineStore('userStore', {
     UPDATE_USER_EMAIL(newEmail: string) {
       this.userEmail = newEmail;
     },
-    SUBMIT_USER_EMAIL() {
-      const userData = { email: this.userEmail };
-
+    SUBMIT_USER_EMAIL(
+      endpoint: ApiEndpoints,
+      userData: User,
+      handleSuccess: (data: any) => void,
+      handleError: (error: Error) => void
+    ) {
       postRequest(
-        'https://dummyjson.com/users/add',
+        endpoint,
         userData,
-        (data) => {
-          console.log('Success:', data);
-          this.signUpStatusSuccess = true;
-          this.UPDATE_USER_EMAIL(this.userEmail); // Update userEmail in store on success
-        },
-        (error) => {
-          this.signUpStatusSuccess = false;
-          console.error('Error:', error);
-        }
+        handleSuccess,
+        handleError
       );
     },
     UPDATE_SIGN_UP_STATUS(incomingSignUpStatus: boolean) {

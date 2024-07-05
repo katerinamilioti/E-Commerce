@@ -20,39 +20,42 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from '../base/BaseButton.vue';
-import BaseInput from '../base/BaseInput.vue';
-import BaseModal from '../base/BaseModal.vue';
-import { ref } from 'vue';
-import { useUserStore } from '../../../src/stores/userStore';
-import { User } from '../../../src/interfaces/User.types';
-import { ApiEndpoints } from '../../../src/enums/ApiEndpoints';
+  import BaseButton from "../base/BaseButton.vue";
+  import BaseInput from "../base/BaseInput.vue";
+  import BaseModal from "../base/BaseModal.vue";
+  import { useUserStore } from "../../../src/stores/userStore";
+  import { User } from "../../../src/interfaces/User.types";
+  import { ApiEndpoints } from "../../../src/enums/ApiEndpoints";
+  import { ref } from "vue";
 
-const showModal = ref(false);
-const userStore = useUserStore();
-const userEmail = ref("");
+  const showModal = ref(false);
+  const userStore = useUserStore();
+  const userEmail = ref("");
 
-const updateInputValue = (newValue: string) => {
-  userEmail.value = newValue;
-  console.log('UPDATE');
-};
+  const updateInputValue = (newInputValue: any) => {
+    userEmail.value = newInputValue;
+  };
 
-const handleSuccess = (data: any) => {
-  console.log('Success:', data);
-  userStore.UPDATE_USER_EMAIL(userEmail.value); 
-  userStore.UPDATE_SIGN_UP_STATUS(true); 
-  showModal.value = false;
-};
+  // Function executed on successful user email submission
+  const handleSuccess = () => {
+    userStore.UPDATE_USER_EMAIL(userEmail.value);
+    userStore.UPDATE_SIGN_UP_STATUS(true);
+    showModal.value = false;
+  };
 
+  // Function executed on error during user email submission
+  const handleError = () => {
+    userStore.UPDATE_SIGN_UP_STATUS(false);
+  };
 
-const handleError = (error: Error) => {
-  console.error('Error:', error);
-  userStore.UPDATE_SIGN_UP_STATUS(false);
-};
-const userEmailSubmit = () => {
-  const userData: User = { email: userEmail.value };
-  userStore.SUBMIT_USER_EMAIL(ApiEndpoints.AddUser, userData, handleSuccess, handleError);
-};
+  // Function to handle user email submission
+  const userEmailSubmit = () => {
+    const userData: User = { email: userEmail.value };
+    userStore.SUBMIT_USER_EMAIL(
+      ApiEndpoints.AddUser,
+      userData,
+      handleSuccess,
+      handleError
+    );
+  };
 </script>
-
-<style scoped></style>

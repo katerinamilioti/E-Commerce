@@ -1,33 +1,37 @@
 <template>
-    <BModal :title="title" v-model="internalShowModal" @ok="okEmit">
-      <slot name="BaseModalContent"></slot>
-    </BModal>
+  <!-- BaseModal component using BModal -->
+  <BModal :title="title" v-model="showModal" @ok="okEmit" centered>
+    <slot name="BaseModalContent"></slot>
+  </BModal>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, defineProps, defineEmits } from "vue";
+  import { ref, watch, defineProps, defineEmits } from "vue";
 
-const props = defineProps({
-  title: String,
-  showModal: Boolean,
-});
+  const props = defineProps({
+    title: String,
+    showModal: Boolean,
+  });
 
-const internalShowModal = ref(props.showModal);
+  const showModal = ref(props.showModal);
 
-const emit = defineEmits(["update:showModal", "ok"]);
+  const emit = defineEmits(["changedShowModalValue", "ok"]);
 
-const okEmit = () => {
-  emit("ok");
-};
+  // Function to emit ok BModal event
+  const okEmit = () => {
+    emit("ok");
+  };
 
-watch(internalShowModal, (newValue) => {
-  emit("update:showModal", newValue);
-});
+  // Watcher for showModal changes
+  watch(showModal, (newValue) => {
+    emit("changedShowModalValue", newValue);
+  });
 
-watch(
-  () => props.showModal,
-  (newValue) => {
-    internalShowModal.value = newValue;
-  }
-);
+  // Watcher for props.showModal changes
+  watch(
+    () => props.showModal,
+    (newValue) => {
+      showModal.value = newValue;
+    }
+  );
 </script>

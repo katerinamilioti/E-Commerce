@@ -1,6 +1,7 @@
 <template>
+    <!-- BaseInput component using BInput -->
     <label>{{ props.label }}</label>
-    <BFormInput :id="`type-${props.type}`" :type="props.type" v-model="inputValue"/>
+    <BFormInput :type="props.type" v-model="inputValue"/>
   </template>
   
   <script setup lang="ts">
@@ -16,9 +17,8 @@
   
   const inputValue = ref(props.value);
   
+  // Watch for changes in inputValue and emit custom event when it changes
   watch(inputValue, (newValue) => {
     emit('changedInputValue', newValue);
   });
-  </script>
-  
-<style scoped></style>
+</script>

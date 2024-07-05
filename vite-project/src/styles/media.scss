@@ -1,0 +1,15 @@
+// Define media queries for responsive design
+
+@import './variables.scss';
+
+@media screen and (min-width: $screen-responsive-width) {
+    .nav-search-position {
+      margin-left: 3rem;
+    }
+}
+
+@media screen and (max-width: $screen-responsive-width) {
+  .nav-search-icon {
+    display: none;
+  }
+}

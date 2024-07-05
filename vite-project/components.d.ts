@@ -25,6 +25,7 @@ declare module 'vue' {
     BNavForm: typeof import('bootstrap-vue-next')['BNavForm']
     BNavItem: typeof import('bootstrap-vue-next')['BNavItem']
     BNavItemDropdown: typeof import('bootstrap-vue-next')['BNavItemDropdown']
+    BToast: typeof import('bootstrap-vue-next')['BToast']
     CallToActionSection: typeof import('./src/components/CallToActionSection.vue')['default']
     Favorites: typeof import('./src/components/navbar/Favorites.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']

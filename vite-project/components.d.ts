@@ -18,7 +18,17 @@ declare module 'vue' {
     BNavForm: typeof import('bootstrap-vue-next')['BNavForm']
     BNavItem: typeof import('bootstrap-vue-next')['BNavItem']
     BNavItemDropdown: typeof import('bootstrap-vue-next')['BNavItemDropdown']
+    Favorites: typeof import('./src/components/navbar/Favorites.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    NavigationSearch: typeof import('./src/components/navbar/NavigationSearch.vue')['default']
+    ShoppingBag: typeof import('./src/components/navbar/ShoppingBag.vue')['default']
+    TheFavorites: typeof import('./src/components/navbar/TheFavorites.vue')['default']
+    TheNavigationBar: typeof import('./src/components/navbar/TheNavigationBar.vue')['default']
+    TheNavigationSearch: typeof import('./src/components/navbar/TheNavigationSearch.vue')['default']
+    TheShoppingBag: typeof import('./src/components/navbar/TheShoppingBag.vue')['default']
+    TheTheNavigationBar: typeof import('./src/components/navbar/TheTheNavigationBar.vue')['default']
+    TheUserDropDown: typeof import('./src/components/navbar/TheUserDropDown.vue')['default']
+    UserDropDown: typeof import('./src/components/navbar/UserDropDown.vue')['default']
   }
   export interface ComponentCustomProperties {
     vBColorMode: typeof import('bootstrap-vue-next')['vBColorMode']

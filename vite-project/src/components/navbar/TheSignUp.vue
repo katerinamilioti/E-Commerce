@@ -24,7 +24,9 @@ import BaseButton from '../base/BaseButton.vue';
 import BaseInput from '../base/BaseInput.vue';
 import BaseModal from '../base/BaseModal.vue';
 import { ref } from 'vue';
-import { useUserStore } from '../../../src/stores/userStore.ts';
+import { useUserStore } from '../../../src/stores/userStore';
+import { User } from '../../../src/interfaces/User.types';
+import { ApiEndpoints } from '../../../src/enums/ApiEndpoints';
 
 const showModal = ref(false);
 const userStore = useUserStore();
@@ -35,9 +37,21 @@ const updateInputValue = (newValue: string) => {
   console.log('UPDATE');
 };
 
-const userEmailSubmit = () => {
-  userStore.SUBMIT_USER_EMAIL();
+const handleSuccess = (data: any) => {
+  console.log('Success:', data);
+  userStore.UPDATE_USER_EMAIL(userEmail.value); 
+  userStore.UPDATE_SIGN_UP_STATUS(true); 
   showModal.value = false;
+};
+
+
+const handleError = (error: Error) => {
+  console.error('Error:', error);
+  userStore.UPDATE_SIGN_UP_STATUS(false);
+};
+const userEmailSubmit = () => {
+  const userData: User = { email: userEmail.value };
+  userStore.SUBMIT_USER_EMAIL(ApiEndpoints.AddUser, userData, handleSuccess, handleError);
 };
 </script>
 

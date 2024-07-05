@@ -8,6 +8,8 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BaseButton: typeof import('./src/components/base/BaseButton.vue')['default']
+    BaseInput: typeof import('./src/components/base/BaseInput.vue')['default']
+    BaseModal: typeof import('./src/components/base/BaseModal.vue')['default']
     BButton: typeof import('bootstrap-vue-next')['BButton']
     BButtonGroup: typeof import('bootstrap-vue-next')['BButtonGroup']
     BCarousel: typeof import('bootstrap-vue-next')['BCarousel']
@@ -15,6 +17,7 @@ declare module 'vue' {
     BCollapse: typeof import('bootstrap-vue-next')['BCollapse']
     BDropdownItem: typeof import('bootstrap-vue-next')['BDropdownItem']
     BFormInput: typeof import('bootstrap-vue-next')['BFormInput']
+    BModal: typeof import('bootstrap-vue-next')['BModal']
     BNavbar: typeof import('bootstrap-vue-next')['BNavbar']
     BNavbarBrand: typeof import('bootstrap-vue-next')['BNavbarBrand']
     BNavbarNav: typeof import('bootstrap-vue-next')['BNavbarNav']
@@ -31,6 +34,7 @@ declare module 'vue' {
     TheNavigationBar: typeof import('./src/components/navbar/TheNavigationBar.vue')['default']
     TheNavigationSearch: typeof import('./src/components/navbar/TheNavigationSearch.vue')['default']
     TheShoppingBag: typeof import('./src/components/navbar/TheShoppingBag.vue')['default']
+    TheSignUp: typeof import('./src/components/navbar/TheSignUp.vue')['default']
     TheSliderBanner: typeof import('./src/components/TheSliderBanner.vue')['default']
     TheTheNavigationBar: typeof import('./src/components/navbar/TheTheNavigationBar.vue')['default']
     TheUserDropDown: typeof import('./src/components/navbar/TheUserDropDown.vue')['default']

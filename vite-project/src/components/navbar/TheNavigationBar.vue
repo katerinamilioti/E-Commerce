@@ -17,6 +17,7 @@
         <TheFavorites></TheFavorites>
         <TheShoppingBag></TheShoppingBag>
         <TheUserDropDown></TheUserDropDown>
+        <TheSignUp></TheSignUp>
       </BNavbarNav>
     </BCollapse>
   </BNavbar>
@@ -27,6 +28,7 @@
   import TheFavorites from "./TheFavorites.vue";
   import TheShoppingBag from "./TheShoppingBag.vue";
   import TheUserDropDown from "./TheUserDropDown.vue";
+  import TheSignUp from "./TheSignUp.vue";
 </script>
 
 <style scoped>
